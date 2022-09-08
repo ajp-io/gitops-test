@@ -25,7 +25,7 @@ metadata:
     kots.io/app-slug: alex-guestbook
     kots.io/backup: velero
   name: alex-guestbook-registry
-  namespace: alex-guestbook
+  namespace: alex-guestbook-old
 type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: v1
@@ -42,7 +42,7 @@ metadata:
     kots.io/app-slug: alex-guestbook
     kots.io/backup: velero
   name: kotsadm-replicated-registry
-  namespace: alex-guestbook
+  namespace: alex-guestbook-old
 type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: v1
