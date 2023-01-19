@@ -9,19 +9,15 @@ data:
         <link href="styles.css" rel="stylesheet" type="text/css">
       </head>
       <body>
-        Hello from KOTS.
+        This is an example KOTS application.
         <p>This is text from a user config value: 'please change this value' </p>
         </br>
-        This is a hidden value:
-        </br>
-        <ul>
-          <li>Hidden Text: 'ydBmxZ28HOx9yXWd59mjPRs5ssC1vGu2UFHcU09F'</li>
-          <li>Hidden Text 2: '3VgMI1d_49GtNuN6umYgAbBM0JhB6vJ166CaNHUb'</li>
-        </ul>
+        This is a hidden value: '9qCfv3kzuR0Oj_IUP7IvvJRtUvF9Kxfr0IPtLWRZ'
       </body>
     </html>
   styles.css: |
     body {
+      text-align: center;
       background-color: rgb(224,224,224);
       font-family: Verdana, Arial, Helvetica, sans-serif;
       font-size: 100%;
@@ -37,7 +33,7 @@ metadata:
 ---
 apiVersion: v1
 data:
-  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtSWlRFSTRiMUJrU21saU4zRnhOMnhGVjNOd04xaE5SSE5QT2pKRVdVeENPRzlRWkVwcFlqZHhjVGRzUlZkemNEZFlUVVJ6VHc9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtSWlRFSTRiMUJrU21saU4zRnhOMnhGVjNOd04xaE5SSE5QT2pKRVdVeENPRzlRWkVwcFlqZHhjVGRzUlZkemNEZFlUVVJ6VHc9PSJ9fX0=
+  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtoblZYcDRZWE0xY0VkbWFrbDBRVTgxWVVkcmIzTmxNMlZNT2pKSVoxVjZlR0Z6TlhCSFptcEpkRUZQTldGSGEyOXpaVE5sVEE9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtoblZYcDRZWE0xY0VkbWFrbDBRVTgxWVVkcmIzTmxNMlZNT2pKSVoxVjZlR0Z6TlhCSFptcEpkRUZQTldGSGEyOXpaVE5sVEE9PSJ9fX0=
 kind: Secret
 metadata:
   annotations:
@@ -54,7 +50,7 @@ type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: v1
 data:
-  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtSWlRFSTRiMUJrU21saU4zRnhOMnhGVjNOd04xaE5SSE5QT2pKRVdVeENPRzlRWkVwcFlqZHhjVGRzUlZkemNEZFlUVVJ6VHc9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtSWlRFSTRiMUJrU21saU4zRnhOMnhGVjNOd04xaE5SSE5QT2pKRVdVeENPRzlRWkVwcFlqZHhjVGRzUlZkemNEZFlUVVJ6VHc9PSJ9fX0=
+  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtoblZYcDRZWE0xY0VkbWFrbDBRVTgxWVVkcmIzTmxNMlZNT2pKSVoxVjZlR0Z6TlhCSFptcEpkRUZQTldGSGEyOXpaVE5sVEE9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtoblZYcDRZWE0xY0VkbWFrbDBRVTgxWVVkcmIzTmxNMlZNT2pKSVoxVjZlR0Z6TlhCSFptcEpkRUZQTldGSGEyOXpaVE5sVEE9PSJ9fX0=
 kind: Secret
 metadata:
   annotations:
@@ -74,18 +70,17 @@ kind: Service
 metadata:
   annotations:
     kots.io/app-slug: nginx
+    kots.io/when: "true"
   labels:
-    app: example
-    component: nginx
+    app: nginx
     kots.io/app-slug: nginx
     kots.io/backup: velero
-  name: example-nginx
+  name: nginx
 spec:
   ports:
   - port: 80
   selector:
-    app: example
-    component: nginx
+    app: nginx
   type: ClusterIP
 ---
 apiVersion: apps/v1
@@ -94,24 +89,21 @@ metadata:
   annotations:
     kots.io/app-slug: nginx
   labels:
-    app: example
-    component: nginx
+    app: nginx
     kots.io/app-slug: nginx
     kots.io/backup: velero
-  name: example-nginx
+  name: nginx
 spec:
   selector:
     matchLabels:
-      app: example
-      component: nginx
+      app: nginx
   template:
     metadata:
       annotations:
         backup.velero.io/backup-volumes: nginx-content
         kots.io/app-slug: nginx
       labels:
-        app: example
-        component: nginx
+        app: nginx
         kots.io/app-slug: nginx
         kots.io/backup: velero
     spec:
